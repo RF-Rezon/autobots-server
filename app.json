@@ -1,0 +1,116 @@
+{
+  "categories": [
+    {
+      "name": "Autobots",
+      "subcategories": [
+        {
+          "name": "Cars",
+          "toys": [
+            {
+              "name": "Optimus Prime",
+              "picture": "optimus_prime.jpg",
+              "price": 29.99,
+              "rating": 4.5
+            },
+            {
+              "name": "Bumblebee",
+              "picture": "bumblebee.jpg",
+              "price": 19.99,
+              "rating": 4.2
+            }
+          ]
+        },
+        {
+          "name": "Dinobots",
+          "toys": [
+            {
+              "name": "Grimlock",
+              "picture": "grimlock.jpg",
+              "price": 34.99,
+              "rating": 4.7
+            },
+            {
+              "name": "Swoop",
+              "picture": "swoop.jpg",
+              "price": 24.99,
+              "rating": 4.4
+            }
+          ]
+        },
+        {
+          "name": "Planes",
+          "toys": [
+            {
+              "name": "Jetfire",
+              "picture": "jetfire.jpg",
+              "price": 39.99,
+              "rating": 4.8
+            },
+            {
+              "name": "Air Raid",
+              "picture": "air_raid.jpg",
+              "price": 29.99,
+              "rating": 4.3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Decepticons",
+      "subcategories": [
+        {
+          "name": "Tanks",
+          "toys": [
+            {
+              "name": "Megatron",
+              "picture": "megatron.jpg",
+              "price": 39.99,
+              "rating": 4.6
+            },
+            {
+              "name": "Shockwave",
+              "picture": "shockwave.jpg",
+              "price": 34.99,
+              "rating": 4.2
+            }
+          ]
+        },
+        {
+          "name": "Insects",
+          "toys": [
+            {
+              "name": "Kickback",
+              "picture": "kickback.jpg",
+              "price": 19.99,
+              "rating": 4.1
+            },
+            {
+              "name": "Bombshell",
+              "picture": "bombshell.jpg",
+              "price": 19.99,
+              "rating": 3.9
+            }
+          ]
+        },
+        {
+          "name": "Jets",
+          "toys": [
+            {
+              "name": "Starscream",
+              "picture": "starscream.jpg",
+              "price": 29.99,
+              "rating": 4.4
+            },
+            {
+              "name": "Thundercracker",
+              "picture": "thundercracker.jpg",
+              "price": 24.99,
+              "rating": 4.0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
