@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const express = require("express");
 require("dotenv").config();
 var cors = require("cors");
@@ -28,6 +28,30 @@ async function run() {
     const user = req.body;
     const result = await haiku.insertOne(user);
     res.send(result)
+    })
+
+    app.get("/getalltoys", async(req, res)=> {
+      const cursor = await haiku.find({}).toArray();
+      res.send(cursor)
+    })
+
+    app.get("/getalltoys/:id", async(req, res)=> {
+      const id = req.params.id;
+      const objectId = new ObjectId(id);
+      const cursor = await haiku.findOne({ _id: objectId });
+      res.send(cursor);
+    })
+
+    app.get("/getmytoys", async(req, res)=> {
+      const cursor = await haiku.find({}).toArray();
+      res.send(cursor)
+    })
+
+    app.delete("/getmytoys/:id", async(req, res)=> {
+      const id = req.params.id;
+      const objectId = new ObjectId(id);
+      const cursor = await haiku.deleteOne({ _id: objectId });
+      res.send(cursor)
     })
 
 
