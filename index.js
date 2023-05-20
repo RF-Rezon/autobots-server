@@ -22,47 +22,60 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     await client.connect();
-    const haiku =  client.db("ToyDB").collection("toy");
+    const haiku = client.db("ToyDB").collection("toy");
 
-    app.post("/posttoys", async(req, res)=>{
-    const user = req.body;
-    const result = await haiku.insertOne(user);
-    res.send(result)
-    })
+    app.post("/posttoys", async (req, res) => {
+      const user = req.body;
+      const result = await haiku.insertOne(user);
+      res.send(result);
+    });
 
-    app.get("/getalltoys", async(req, res)=> {
+    app.get("/getalltoys", async (req, res) => {
       const cursor = await haiku.find({}).toArray();
-      res.send(cursor)
-    })
+      res.send(cursor);
+    });
 
-    app.get("/getalltoys/:id", async(req, res)=> {
+    app.get("/getalltoys/:id", async (req, res) => {
       const id = req.params.id;
       const objectId = new ObjectId(id);
       const cursor = await haiku.findOne({ _id: objectId });
       res.send(cursor);
-    })
+    });
 
-    app.get("/getmytoys", async(req, res)=> {
+    app.get("/getmytoys", async (req, res) => {
       const cursor = await haiku.find({}).toArray();
-      res.send(cursor)
-    })
+      res.send(cursor);
+    });
 
-    app.delete("/getmytoys/:id", async(req, res)=> {
+    app.get("/getmytoys/:id", async (req, res) => {
+      const id = req.params.id;
+      const objectId = new ObjectId(id);
+      const cursor = await haiku.findOne({ _id: objectId });
+      res.send(cursor);
+    });
+
+    app.put("/getmytoys/:id", async (req, res) => {
+      const id = req.params.id;
+      const updateduser = req.body;
+      console.log(id, updateduser);
+      const result = await haiku.findOneAndUpdate({_id: new ObjectId(id)}, { $set: {price: updateduser.price, quantity: updateduser.quantity, description: updateduser.description} }, { upsert: true });
+      res.send(result)
+    });
+
+    app.delete("/getmytoys/:id", async (req, res) => {
       const id = req.params.id;
       const objectId = new ObjectId(id);
       const cursor = await haiku.deleteOne({ _id: objectId });
-      res.send(cursor)
-    })
+      res.send(cursor);
+    });
 
     // app.put("/update/:id", async(req, res)=>{
     //   const id = req.params.id;
     // })
 
-
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
-
   }
 }
 run().catch(console.dir);
