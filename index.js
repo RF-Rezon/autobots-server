@@ -21,7 +21,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
+    //  client.connect();
     const haiku = client.db("ToyDB").collection("toy");
 
     app.post("/posttoys", async (req, res) => {
@@ -57,7 +57,6 @@ async function run() {
     app.put("/getmytoys/:id", async (req, res) => {
       const id = req.params.id;
       const updateduser = req.body;
-      console.log(id, updateduser);
       const result = await haiku.findOneAndUpdate({_id: new ObjectId(id)}, { $set: {price: updateduser.price, quantity: updateduser.quantity, description: updateduser.description} }, { upsert: true });
       res.send(result)
     });
@@ -69,12 +68,6 @@ async function run() {
       res.send(cursor);
     });
 
-    // app.put("/update/:id", async(req, res)=>{
-    //   const id = req.params.id;
-    // })
-
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
   }
 }
